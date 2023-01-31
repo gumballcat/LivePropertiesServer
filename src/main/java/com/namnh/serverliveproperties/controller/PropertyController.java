@@ -7,12 +7,17 @@ import com.namnh.serverliveproperties.repository.PropertyGroupMappingRepository;
 import com.namnh.serverliveproperties.repository.PropertyGroupRepository;
 import com.namnh.serverliveproperties.repository.PropertyRepository;
 import com.namnh.serverliveproperties.utils.CollectionUtils;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class PropertyController {
@@ -36,13 +41,13 @@ public class PropertyController {
     }
 
     @GetMapping("/properties/{id}")
-    public Property getProperty(@PathVariable long id) {
-        return PROPERTY_REPOSITORY.findById(id).orElse(Property.EMPTY);
+    public EntityModel<Property> getProperty(@PathVariable long id) {
+        return _buildEntityModel(PROPERTY_REPOSITORY.findById(id).orElse(Property.EMPTY));
     }
 
     @PostMapping("/properties")
-    public Property createProperty(@RequestBody Property property) {
-        return PROPERTY_REPOSITORY.save(property);
+    public EntityModel<Property> createProperty(@RequestBody Property property) {
+        return _buildEntityModel(PROPERTY_REPOSITORY.save(property));
     }
 
     @PutMapping("/properties/{id}")
@@ -97,5 +102,25 @@ public class PropertyController {
     @GetMapping("/property-group-mappings")
     public List<PropertyGroupMapping> getAllPropertyMappings() {
         return PROPERTY_GROUP_MAPPING_REPOSITORY.findAll();
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // Private
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    private Link getSelfRel(Property property){
+        return methodOn(this.getClass()).getProperty(1);
+        return linkTo(methodOn(this.getClass()).getProperty(property.getId())).withSelfRel();
+    }
+
+    private Link getAllRel(){
+        return linkTo(methodOn(this.getClass()).getAllProperties()).withRel("all");
+    }
+
+    private EntityModel<Property> _buildEntityModel(Property property) {
+        return EntityModel.of(
+                property,
+                linkTo(methodOn(this.getClass()).getProperty(property.getId())).withSelfRel(),
+                linkTo(methodOn(this.getClass()).getAllProperties()).withRel("all")
+        );
     }
 }
