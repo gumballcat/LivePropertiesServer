@@ -1,4 +1,4 @@
-package com.namnh.serverliveproperties.entity;
+package com.namnh.serverliveproperties.http.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

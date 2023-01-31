@@ -1,8 +1,8 @@
-package com.namnh.serverliveproperties.repository;
+package com.namnh.serverliveproperties.http.repository;
 
-import com.namnh.serverliveproperties.entity.Property;
-import com.namnh.serverliveproperties.entity.PropertyGroup;
-import com.namnh.serverliveproperties.entity.PropertyGroupMapping;
+import com.namnh.serverliveproperties.http.entity.Property;
+import com.namnh.serverliveproperties.http.entity.PropertyGroup;
+import com.namnh.serverliveproperties.http.entity.PropertyGroupMapping;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

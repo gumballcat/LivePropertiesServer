@@ -1,4 +1,4 @@
-package com.namnh.serverliveproperties.utils;
+package com.namnh.serverliveproperties.http.utils;
 
 import java.util.Collection;
 

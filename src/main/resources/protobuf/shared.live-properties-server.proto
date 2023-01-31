@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.namnh.serverliveproperties.grpc.protobuf.shared";
+option java_outer_classname = "Shared";
+
+message Property {
+  optional int64 id = 1;
+  optional string name = 2;
+  optional string val = 3;
+}
+
+message PropertyGroup {
+  optional int64 id = 1;
+  optional string name = 2;
+  repeated Property properties = 3 [packed = true];
+}
