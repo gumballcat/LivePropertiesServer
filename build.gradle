@@ -34,20 +34,22 @@ dependencies {
 	runtimeOnly 'com.h2database:h2:2.1.214'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
 task syncProto(type: Sync) {
 	from 'build/generated/source/proto'
 	into 'src'
 	preserve {
-		include '*'
+		exclude '*'
 	}
+}
+
+task cleanProto(type: Delete){
+	delete 'build/generated/source/proto'
 }
 
 task generateProtoAndSync {
 	dependsOn 'generateProto'
 	dependsOn 'syncProto'
+	dependsOn 'cleanProto'
 	tasks.findByName('syncProto').mustRunAfter 'generateProto'
+	tasks.findByName('cleanProto').mustRunAfter 'syncProto'
 }
