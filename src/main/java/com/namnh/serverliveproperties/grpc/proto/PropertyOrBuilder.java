@@ -17,4 +17,36 @@ public interface PropertyOrBuilder extends
    * @return The id.
    */
   int getId();
+
+  /**
+   * <code>optional string name = 2;</code>
+   * @return Whether the name field is set.
+   */
+  boolean hasName();
+  /**
+   * <code>optional string name = 2;</code>
+   * @return The name.
+   */
+  java.lang.String getName();
+  /**
+   * <code>optional string name = 2;</code>
+   * @return The bytes for name.
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
+
+  /**
+   * <code>optional .google.protobuf.Any value = 3;</code>
+   * @return Whether the value field is set.
+   */
+  boolean hasValue();
+  /**
+   * <code>optional .google.protobuf.Any value = 3;</code>
+   * @return The value.
+   */
+  com.google.protobuf.Any getValue();
+  /**
+   * <code>optional .google.protobuf.Any value = 3;</code>
+   */
+  com.google.protobuf.AnyOrBuilder getValueOrBuilder();
 }

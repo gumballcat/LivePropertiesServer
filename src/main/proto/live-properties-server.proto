@@ -1,9 +1,33 @@
 syntax = 'proto3';
 
 option java_multiple_files = true;
-option java_package = "com.namnh.serverliveproperties.grpc.proto";
-option java_outer_classname = "LivePropertiesServerProto";
+option java_package = 'com.namnh.serverliveproperties.grpc.proto';
+option java_outer_classname = 'LivePropertiesServerProto';
+
+import 'google/protobuf/any.proto';
+
+service LivePropertiesServer {
+  rpc getProperty(GetPropertyRequest) returns(GetPropertyResponse);
+}
+
+message GetPropertyRequest {
+  optional ServiceID serviceID = 1;
+  optional string propertyName = 2;
+}
+
+message GetPropertyResponse {
+  optional sint32 error = 1;
+  optional Property payload = 2;
+  optional string message = 3;
+}
+
+message ServiceID {
+  optional string serviceName = 1;
+  optional string address = 2;
+}
 
 message Property {
-  optional uint32 id=1;
+  optional uint32 id = 1;
+  optional string name = 2;
+  optional google.protobuf.Any value = 3;
 }
