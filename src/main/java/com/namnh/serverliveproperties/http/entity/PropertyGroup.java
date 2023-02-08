@@ -20,6 +20,6 @@ public class PropertyGroup {
     private String name;
 
     public PropertyGroup(String name){
-        setName(name);
+        this.name = name;
     }
 }

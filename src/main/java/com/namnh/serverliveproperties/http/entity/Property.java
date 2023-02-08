@@ -6,9 +6,6 @@ import lombok.*;
 @Entity
 @Table(name = "property")
 @ToString
-@NoArgsConstructor
-@Getter
-@Setter
 public class Property {
 
     @Transient
@@ -19,8 +16,36 @@ public class Property {
     private String name;
     private String val;
 
+    public Property(){
+
+    }
+
     public Property(String name, String val) {
-        setName(name);
-        setVal(val);
+        this.name = name;
+        this.val = val;
+    }
+
+    public long getID() {
+        return id;
+    }
+
+    public void setID(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

@@ -1,17 +1,20 @@
 package com.namnh.serverliveproperties.http.entity;
 
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
+@Setter
 public class User {
 
-    private @Id long id;
-    private String name;
+    private final @Id long id;
+    private final String name;
+
+    public User(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

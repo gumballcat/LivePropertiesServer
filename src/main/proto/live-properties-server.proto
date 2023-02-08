@@ -11,23 +11,23 @@ service LivePropertiesServer {
 }
 
 message GetPropertyRequest {
-  optional ServiceID serviceID = 1;
+  optional GServiceID serviceID = 1;
   optional string propertyName = 2;
 }
 
 message GetPropertyResponse {
   optional sint32 error = 1;
-  optional Property payload = 2;
+  optional GProperty payload = 2;
   optional string message = 3;
 }
 
-message ServiceID {
+message GServiceID {
   optional string serviceName = 1;
   optional string address = 2;
 }
 
-message Property {
-  optional uint32 id = 1;
+message GProperty {
+  optional uint64 id = 1;
   optional string name = 2;
-  optional google.protobuf.Any value = 3;
+  optional string value = 3;
 }
