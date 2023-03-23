@@ -10,8 +10,12 @@ import javax.inject.Inject;
 
 public class LivePropertiesServerImpl extends LivePropertiesServerGrpc.LivePropertiesServerImplBase {
 
+    private final PropertyModel PROPERTY_MODEL;
+
     @Inject
-    private PropertyModel PROPERTY_MODEL;
+    public LivePropertiesServerImpl(PropertyModel propertyModel){
+        PROPERTY_MODEL = propertyModel;
+    }
 
     @Override
     public void getProperty(GetPropertyRequest request, StreamObserver<GetPropertyResponse> observer) {

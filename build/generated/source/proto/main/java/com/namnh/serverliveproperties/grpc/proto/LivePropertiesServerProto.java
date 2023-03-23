@@ -53,7 +53,7 @@ public final class LivePropertiesServerProto {
       "rrorB\n\n\010_payloadB\n\n\010_message\"X\n\nGService" +
       "ID\022\030\n\013serviceName\030\001 \001(\tH\000\210\001\001\022\024\n\007address\030" +
       "\002 \001(\tH\001\210\001\001B\016\n\014_serviceNameB\n\n\010_address\"]" +
-      "\n\tGProperty\022\017\n\002id\030\001 \001(\004H\000\210\001\001\022\021\n\004name\030\002 \001" +
+      "\n\tGProperty\022\017\n\002id\030\001 \001(\tH\000\210\001\001\022\021\n\004name\030\002 \001" +
       "(\tH\001\210\001\001\022\022\n\005value\030\003 \001(\tH\002\210\001\001B\005\n\003_idB\007\n\005_n" +
       "ameB\010\n\006_value2P\n\024LivePropertiesServer\0228\n" +
       "\013getProperty\022\023.GetPropertyRequest\032\024.GetP" +

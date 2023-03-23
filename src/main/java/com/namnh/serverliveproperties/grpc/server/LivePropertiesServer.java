@@ -1,5 +1,6 @@
 package com.namnh.serverliveproperties.grpc.server;
 
+import com.namnh.serverliveproperties.grpc.model.PropertyModel;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
@@ -12,7 +13,7 @@ public class LivePropertiesServer {
     private final Server SERVER;
 
     public LivePropertiesServer(int port) {
-        SERVER = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create()).addService(new LivePropertiesServerImpl()).build();
+        SERVER = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create()).addService(new LivePropertiesServerImpl(PropertyModel.INST)).build();
     }
 
     public void start() throws IOException {

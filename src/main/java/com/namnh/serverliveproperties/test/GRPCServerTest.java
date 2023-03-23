@@ -4,7 +4,7 @@ import com.namnh.serverliveproperties.grpc.server.LivePropertiesServer;
 
 import java.io.IOException;
 
-public class Test {
+public class GRPCServerTest {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         LivePropertiesServer server = new LivePropertiesServer(8090);

@@ -8,15 +8,21 @@ public interface GPropertyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional uint64 id = 1;</code>
+   * <code>optional string id = 1;</code>
    * @return Whether the id field is set.
    */
   boolean hasId();
   /**
-   * <code>optional uint64 id = 1;</code>
+   * <code>optional string id = 1;</code>
    * @return The id.
    */
-  long getId();
+  java.lang.String getId();
+  /**
+   * <code>optional string id = 1;</code>
+   * @return The bytes for id.
+   */
+  com.google.protobuf.ByteString
+      getIdBytes();
 
   /**
    * <code>optional string name = 2;</code>

@@ -1,22 +1,23 @@
 package com.namnh.serverliveproperties.http.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.ToString;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "property")
 @ToString
-public class Property {
+public class Property extends RepresentationModel<Property> {
 
     @Transient
     public static final Property EMPTY = new Property("", "");
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private String name;
     private String val;
 
-    public Property(){
+    public Property() {
 
     }
 
@@ -25,11 +26,11 @@ public class Property {
         this.val = val;
     }
 
-    public long getID() {
+    public String getID() {
         return id;
     }
 
-    public void setID(long id) {
+    public void setID(String id) {
         this.id = id;
     }
 

@@ -5,16 +5,14 @@ import com.namnh.serverliveproperties.grpc.proto.GetPropertyResponse;
 import com.namnh.serverliveproperties.http.entity.Property;
 import com.namnh.serverliveproperties.http.repository.PropertyRepository;
 import com.namnh.serverliveproperties.shared.Converter;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-@Singleton
 public class PropertyModel {
 
-    @Inject
-    private PropertyRepository PROPERTY_REPO;
+    public static final PropertyModel INST = new PropertyModel();
 
+    @Autowired
+    private PropertyRepository PROPERTY_REPO;
 
     public GetPropertyResponse get(GetPropertyRequest request) {
         GetPropertyResponse.Builder response = GetPropertyResponse.newBuilder();

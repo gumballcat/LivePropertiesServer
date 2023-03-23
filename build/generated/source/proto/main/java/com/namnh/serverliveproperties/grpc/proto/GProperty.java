@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GProperty() {
+    id_ = "";
     name_ = "";
     value_ = "";
   }
@@ -47,9 +48,10 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
-  private long id_ = 0L;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object id_ = "";
   /**
-   * <code>optional uint64 id = 1;</code>
+   * <code>optional string id = 1;</code>
    * @return Whether the id field is set.
    */
   @java.lang.Override
@@ -57,12 +59,39 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional uint64 id = 1;</code>
+   * <code>optional string id = 1;</code>
    * @return The id.
    */
   @java.lang.Override
-  public long getId() {
-    return id_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      id_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string id = 1;</code>
+   * @return The bytes for id.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getIdBytes() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      id_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int NAME_FIELD_NUMBER = 2;
@@ -174,7 +203,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeUInt64(1, id_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -192,8 +221,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, id_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -218,8 +246,8 @@ private static final long serialVersionUID = 0L;
 
     if (hasId() != other.hasId()) return false;
     if (hasId()) {
-      if (getId()
-          != other.getId()) return false;
+      if (!getId()
+          .equals(other.getId())) return false;
     }
     if (hasName() != other.hasName()) return false;
     if (hasName()) {
@@ -244,8 +272,7 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasId()) {
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getId());
+      hash = (53 * hash) + getId().hashCode();
     }
     if (hasName()) {
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -384,7 +411,7 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      id_ = 0L;
+      id_ = "";
       name_ = "";
       value_ = "";
       return this;
@@ -481,7 +508,9 @@ private static final long serialVersionUID = 0L;
     public Builder mergeFrom(com.namnh.serverliveproperties.grpc.proto.GProperty other) {
       if (other == com.namnh.serverliveproperties.grpc.proto.GProperty.getDefaultInstance()) return this;
       if (other.hasId()) {
-        setId(other.getId());
+        id_ = other.id_;
+        bitField0_ |= 0x00000001;
+        onChanged();
       }
       if (other.hasName()) {
         name_ = other.name_;
@@ -519,11 +548,11 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              id_ = input.readUInt64();
+            case 10: {
+              id_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000001;
               break;
-            } // case 8
+            } // case 10
             case 18: {
               name_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000002;
@@ -551,42 +580,81 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long id_ ;
+    private java.lang.Object id_ = "";
     /**
-     * <code>optional uint64 id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @return Whether the id field is set.
      */
-    @java.lang.Override
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional uint64 id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @return The id.
      */
-    @java.lang.Override
-    public long getId() {
-      return id_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>optional uint64 id = 1;</code>
+     * <code>optional string id = 1;</code>
+     * @return The bytes for id.
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
      * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setId(long value) {
-      
+    public Builder setId(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       id_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>optional uint64 id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearId() {
+      id_ = getDefaultInstance().getId();
       bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = 0L;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     * @param value The bytes for id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      id_ = value;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
